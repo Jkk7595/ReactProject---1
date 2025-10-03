@@ -3,9 +3,10 @@ import audienceRotten from"../assets/audience-rotten.jpg"
 import criticCertified from "../assets/critic-certified.jpg"
 import criticFresh from "../assets/critic-fresh.jpg"
 import criticRotten from "../assets/critic-rotten.jpg"
-import React from "react"
-import { movies } from "../assets/movies.js"
+import React, { useEffect } from "react"
+import { movies } from "../../public/movies.js"
 function Moviesdetails(){
+    
     return(
 
         <>
@@ -35,18 +36,19 @@ function Moviesdetails(){
                         
                         <div key={movie.name}>
                             <img src={movie.image} alt={movie.name} />
-                            <img src={audienceFresh} />
+                            {/* <img src={audienceFresh} /> */}
 
                         </div>
               ))}
               
-               
             </div>
         </>
             )
+                            
         }
         export default Moviesdetails
                                       
+               
 
                     
                                         
