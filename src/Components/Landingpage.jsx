@@ -1,24 +1,34 @@
-import rotten from"../assets/Rotten.png"
+import rotten from"../assets/logo.jpg.png"
 function Landingpage(){
 
     return(
         <>
-        
-            <img src={rotten} alt="Logo" />
-       
-                <div>
+            <main>
+                <img src={rotten} alt="Logo" />
                         <input type="text"  placeholder="Search movies,tv,actors..." />
-                </div>
-                <main>
-                    <ul>
+                <div className="nav-bar">
+              
+                    <div>
+                        <ul>
+
                         <li>What's the Tomatoes®?</li>
                         <li>Critics</li>
                         <li>Login/signup</li> 
+                        </ul>
+                    </div>
+
+                        <div className="nav2">
+                            <ul>
+
                         <li>Movies</li>
                         <li>Tv Shows</li>
                         <li>Movie Trivia</li>
                         <li>Showtime</li>
-                    </ul>
+                    
+                            </ul>
+                        </div>
+                </div>
+       
              </main>
         
         

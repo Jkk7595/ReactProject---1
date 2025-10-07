@@ -36,7 +36,8 @@ function Moviesdetails(){
                         
                         <div key={movie.name}>
                             <img src={movie.image} alt={movie.name} />
-                            {/* <img src={audienceFresh} /> */}
+                            <p>{movie.genre}</p>
+                            <p>{movie.year}</p>
 
                         </div>
               ))}
