@@ -3,63 +3,151 @@ import audienceRotten from "../assets/audience-rotten.jpg";
 import criticCertified from "../assets/critic-certified.jpg";
 import criticFresh from "../assets/critic-fresh.jpg";
 import criticRotten from "../assets/critic-rotten.jpg";
-import React from "react";
 
-export default function Selectedmovie({ movie, onBack }) {
-    // Defensive rendering with try/catch to avoid breaking the app
-    try {
-        if (!movie) {
-            return (
-                <section className="selected-empty">
-                    <h2>No movie selected</h2>
-                    <p>Click a movie card to view details.</p>
-                </section>
-            );
-        }
+function Selectedmovie({ movie, onBack }) {
+  // Error handling - if no movie is provided
+  if (!movie) {
+    return (
+      <div className="error-container">
+        <h2>No movie selected</h2>
+        <button onClick={onBack} className="back-button">
+          Go Back to Movies
+        </button>
+      </div>
+    );
+  }
 
-        const audienceIcon = movie.audienceScore >= 60 ? audienceFresh : audienceRotten;
-        const criticIcon = movie.criticScore >= 90 ? criticCertified : movie.criticScore >= 60 ? criticFresh : criticRotten;
-
-        return (
-            <section className="selected-movie">
-                <button className="search-button" onClick={() => typeof onBack === "function" && onBack()}>
-                    Back
-                </button>
-                <div className="selected-grid">
-                    <img src={movie.image} alt={movie.name} className="poster poster-circle large" />
-                    <div className="selected-info">
-                        <h2>{movie.name} <span className="movie-year">({movie.year})</span></h2>
-                        <p className="movie-meta">{movie.genre} • {movie.time} • {movie.rating}</p>
-                        <p className="consensus">{movie.criticConsensus}</p>
-
-                        <div className="scores">
-                            <div className="score audience-score">
-                                <img src={audienceIcon} alt="audience" className="score-icon" />
-                                <strong>{movie.audienceScore}%</strong>
-                                <small> ({movie.audienceReviews} reviews)</small>
-                            </div>
-
-                            <div className="score critic-score">
-                                <img src={criticIcon} alt="critic" className="score-icon" />
-                                <strong>{movie.criticScore}%</strong>
-                                <small> ({movie.criticReviews} reviews)</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        );
-    } catch (err) {
-        console.error("Selectedmovie render error", err);
-        return (
-            <section className="selected-error">
-                <h2>Something went wrong</h2>
-                <p>Unable to display movie details.</p>
-                <button className="search-button" onClick={() => typeof onBack === "function" && onBack()}>
-                    Back
-                </button>
-            </section>
-        );
+  // Conditional rendering for tomato icons based on score
+  const getCriticImage = (criticScore) => {
+    if (criticScore >= 90) {
+      return criticCertified; // Certified Fresh
+    } else if (criticScore >= 60) {
+      return criticFresh; // Fresh
+    } else {
+      return criticRotten; // Rotten
     }
+  };
+
+  const getAudienceImage = (audienceScore) => {
+    if (audienceScore >= 60) {
+      return audienceFresh; // Fresh
+    } else {
+      return audienceRotten; // Rotten
+    }
+  };
+
+  const getCriticAlt = (criticScore) => {
+    if (criticScore >= 90) return "Certified Fresh";
+    if (criticScore >= 60) return "Fresh";
+    return "Rotten";
+  };
+
+  const getAudienceAlt = (audienceScore) => {
+    return audienceScore >= 60 ? "Audience Fresh" : "Audience Rotten";
+  };
+
+  const getCriticLabel = (criticScore) => {
+    if (criticScore >= 90) return "Certified Fresh";
+    if (criticScore >= 60) return "Fresh";
+    return "Rotten";
+  };
+
+  return (
+    <div className="selected-movie-container">
+      <button onClick={onBack} className="back-button">
+        ← Back to Movies
+      </button>
+
+      <div className="movie-details">
+        <div className="movie-poster-section">
+          <img 
+            src={movie.image} 
+            alt={movie.name} 
+            className="movie-poster-large"
+          />
+        </div>
+
+        <div className="movie-info-section">
+          <h1 className="movie-title-large">
+            {movie.name} <span className="movie-year-large">({movie.year})</span>
+          </h1>
+
+          <p className="movie-meta-large">
+            {movie.genre} • {movie.time}
+          </p>
+
+          <div className="scores-section">
+            <div className="score-card">
+              <h3>Tomatometer</h3>
+              <div className="score-display">
+                <img
+                  src={getCriticImage(movie.criticScore)}
+                  alt={getCriticAlt(movie.criticScore)}
+                  className="score-icon-large"
+                />
+                <div>
+                  <span className="score-value-large">{movie.criticScore}%</span>
+                  <span className="score-label">{getCriticLabel(movie.criticScore)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="score-card">
+              <h3>Audience Score</h3>
+              <div className="score-display">
+                <img
+                  src={getAudienceImage(movie.audienceScore)}
+                  alt={getAudienceAlt(movie.audienceScore)}
+                  className="score-icon-large"
+                />
+                <div>
+                  <span className="score-value-large">{movie.audienceScore}%</span>
+                  <span className="score-label">
+                    {movie.audienceScore >= 60 ? "Liked it" : "Didn't like it"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {movie.description && (
+            <div className="movie-description">
+              <h3>Synopsis</h3>
+              <p>{movie.description}</p>
+            </div>
+          )}
+
+          {movie.director && (
+            <div className="movie-detail-row">
+              <strong>Director:</strong>
+              <span>{movie.director}</span>
+            </div>
+          )}
+
+          {movie.cast && movie.cast.length > 0 && (
+            <div className="movie-detail-row">
+              <strong>Cast:</strong>
+              <span>{movie.cast.join(", ")}</span>
+            </div>
+          )}
+
+          {movie.rating && (
+            <div className="movie-detail-row">
+              <strong>Rating:</strong>
+              <span>{movie.rating}</span>
+            </div>
+          )}
+
+          {movie.studio && (
+            <div className="movie-detail-row">
+              <strong>Studio:</strong>
+              <span>{movie.studio}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
-        
+
+export default Selectedmovie;
