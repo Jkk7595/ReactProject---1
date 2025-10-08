@@ -4,9 +4,40 @@ import criticCertified from "../assets/critic-certified.jpg";
 import criticFresh from "../assets/critic-fresh.jpg";
 import criticRotten from "../assets/critic-rotten.jpg";
 import { movies } from "../../public/movies.js";
+import { useRef, useEffect } from "react";
 
 function Moviesreview() {
     // Render the movies as responsive cards in rows/columns using a CSS grid.
+    const carouselRef = useRef(null);
+
+    useEffect(() => {
+        const el = carouselRef.current;
+        if (!el) return;
+        const step = () => {
+            const scrollAmount = el.clientWidth * 0.9;
+            if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 1) {
+                // if at end, go back to start
+                el.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                el.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            }
+        };
+        const id = setInterval(step, 3000);
+        return () => clearInterval(id);
+    }, []);
+
+    const handlePrev = () => {
+        const el = carouselRef.current;
+        if (!el) return;
+        el.scrollBy({ left: -el.clientWidth * 0.9, behavior: "smooth" });
+    };
+
+    const handleNext = () => {
+        const el = carouselRef.current;
+        if (!el) return;
+        el.scrollBy({ left: el.clientWidth * 0.9, behavior: "smooth" });
+    };
+
     return (
         <div>
             <div className="nav-6">
@@ -24,11 +55,22 @@ function Moviesreview() {
                 </ul>
             </nav>
 
-            <section className="movies-section">
-                <div className="movies-grid">
-                    {movies.map((item, idx) => (
-                        <article className="movie-card" key={item.name + idx}>
-                            <img src={item.image} alt={item.name} className="poster" />
+                    <section className="movies-section">
+                        <div className="carousel-wrap">
+                            <button className="carousel-btn prev" onClick={handlePrev} aria-label="Previous">
+                                ‹
+                            </button>
+                            <div className="movies-grid carousel" ref={carouselRef}>
+                                {movies.map((item, idx) => (
+                                    <article
+                                        className="movie-card"
+                                        key={item.name + idx}
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={() => typeof onMovieSelect === "function" && onMovieSelect(item)}
+                                        onKeyDown={(e) => { if (e.key === 'Enter') typeof onMovieSelect === 'function' && onMovieSelect(item) }}
+                                    >
+                                        <img src={item.image} alt={item.name} className="poster poster-circle" />
                             <div className="movie-info">
                                 <h3 className="movie-title">
                                     {item.name} <span className="movie-year">({item.year})</span>
@@ -37,7 +79,7 @@ function Moviesreview() {
                                     {item.genre} • {item.time}
                                 </p>
 
-                                <div className="scores">
+                                                <div className="scores">
                                     <div className="score audience-score">
                                         <img
                                             src={item.audienceScore >= 60 ? audienceFresh : audienceRotten}
@@ -63,9 +105,13 @@ function Moviesreview() {
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                    ))}
-                </div>
+                                            </article>
+                                        ))}
+                                    </div>
+                                    <button className="carousel-btn next" onClick={handleNext} aria-label="Next">
+                                        ›
+                                    </button>
+                                </div>
             </section>
         </div>
     );
