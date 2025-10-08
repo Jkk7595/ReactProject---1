@@ -10,8 +10,7 @@ function Moviesdetails(){
     return(
 
         <>
-            <div>
-                <nav>
+                <nav className="nav-3">
                     <ul>
                         <li>Treading on RT</li>
                         <li>New</li>
@@ -26,11 +25,11 @@ function Moviesdetails(){
                         <li>Only in the theatre Friday</li>
                     </ul>
                 </nav>
-            </div>
-            
-            <div>
-                <p>New & upcoming movies in theatre</p>
-                <p>View All</p>
+            <div className="nav-4">
+                <p>NEW & UPCOMING MOVIES IN THEATRE</p>
+                <a href="#">View all</a>
+                </div>
+                <div className="nav-5">
               {movies.map((movie)=>(
                         // console.log(movies)
                         
@@ -45,8 +44,11 @@ function Moviesdetails(){
             </div>
         </>
             )
+        
+            
                             
         }
+            
         export default Moviesdetails
                                       
                

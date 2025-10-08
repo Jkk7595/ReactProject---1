@@ -1,0 +1,93 @@
+main{
+  display: flex;
+  margin: 10px;
+  padding:10px;
+  background-color:red;
+  color: white;
+  cursor: pointer;
+}
+img{
+  height: 70px;
+  width:90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  
+}
+.search-button{
+   background-color: maroon;
+      color: white;
+      padding: 10px 10px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: auto;
+      width: 150px;
+      margin: 10px;
+}
+.nav-1 ul{
+  display:flex;
+  padding: auto;
+}
+.nav-1 ul li{
+  display: inline-block;
+  padding: 15px;
+  margin: 5px;
+  text-decoration: none;
+
+} 
+.nav-2 ul{
+  display:flex;
+  padding: auto;
+}
+.nav-2 ul li{
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+}
+
+
+.nav-3{
+  background-color: black;
+}
+.nav-3 ul li{
+  display: inline-block;
+  color: white;
+   margin: 10px;
+  padding:10px;
+}
+
+.nav-4 {
+  background-color: #fff;
+  color: black;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+  font-weight: bolder;  
+  font:32px;      
+}
+.nav-5{
+   display: flex;
+   padding: 10px;
+   align-items: center;
+   justify-content:space-evenly;
+}
+.nav-6{
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.nav-7 ul li{
+  display: inline-block;
+  padding: 3px;
+  align-items: center;
+  text-decoration: none;
+  color: lightseagreen;
+  font: bold;
+}

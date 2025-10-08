@@ -13,17 +13,19 @@ function Moviesreview(){
 //  }
     return(
 
-        <div>
+        <div >
+            <div className="nav-6">
            <h2>Popular Streaming Movies</h2>
            <a href="#">View all</a>
-           
-            <nav>
+            </div>
+            <nav className="nav-7">
                <ul>
-                    <li>Vudu</li>
-                    <li>NetFlix</li>
-                    <li>Prime video</li>
-                    <li>max</li>
-                    <li>More...</li>
+                    <li>Vudu</li> |
+                    <li>NetFlix</li> |
+                    <li>Prime video</li> |
+                    <li>max</li> |
+                    <li>More...</li> 
+                    
                     
                     {movies.map((item)=>(
                         // console.log(movies)
@@ -47,3 +49,6 @@ function Moviesreview(){
     )
 }
 export default Moviesreview
+
+           
+ 

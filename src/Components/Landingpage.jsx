@@ -1,42 +1,49 @@
-import rotten from"../assets/logo.jpg.png"
+import rotten from"../assets/logo.png.png"
+import SearchIcon from "./SearchIcon"
+
 function Landingpage(){
 
     return(
         <>
             <main>
                 <img src={rotten} alt="Logo" />
-                        <input type="text"  placeholder="Search movies,tv,actors..." />
-                <div className="nav-bar">
-              
-                    <div>
+                    <SearchIcon />
+                        <i className="fas fa-search"></i>
+                <div className="nav-1">
                         <ul>
-
-                        <li>What's the Tomatoes®?</li>
-                        <li>Critics</li>
-                        <li>Login/signup</li> 
+                            <li>What's the Tomatoes®?</li>
+                            <li>Critics</li>
+                            <li>Login/signup</li> 
                         </ul>
-                    </div>
-
-                        <div className="nav2">
-                            <ul>
-
-                        <li>Movies</li>
-                        <li>Tv Shows</li>
-                        <li>Movie Trivia</li>
-                        <li>Showtime</li>
-                    
-                            </ul>
-                        </div>
                 </div>
+                <div className="nav-2">
+                            <ul>
+                                <li>Movies</li>
+                                <li>Tv Shows</li>
+                                <li>Movie Trivia</li>
+                                <li>Showtime</li>
+                            </ul>
+                </div>
+
        
-             </main>
-        
-        
+            </main>
         </>
+                    
+
+                        
   
             )
         }
         export default Landingpage
+
+                
+            
+        
+        
+                
+              
+                    
+                    
             
             
 
