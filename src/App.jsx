@@ -12,7 +12,7 @@ function App() {
   const handleMovieClick = (movie) => {
     try {
       if (!movie) {
-        throw new Error("Invalid movie data");
+        throw new Error("No Movie Found! try again");
       }
       setSelectedMovie(movie);
       setCurrentPage("movie");
@@ -23,14 +23,14 @@ function App() {
     }
   };
 
-  const handleBackHome = () => {
+  const Homepage = () => {
     setCurrentPage("home");
     setSelectedMovie(null);
   };
 
   return (
     <>
-      <Landingpage onBackHome={handleBackHome} />
+      <Landingpage onBackHome={Homepage} />
       
       {currentPage === "home" && (
         <>
@@ -40,7 +40,7 @@ function App() {
       )}
       
       {currentPage === "movie" && selectedMovie && (
-        <Selectedmovie movie={selectedMovie} onBack={handleBackHome} />
+        <Selectedmovie movie={selectedMovie} onBack={Homepage} />
       )}
     </>
   );
