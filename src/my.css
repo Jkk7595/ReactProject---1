@@ -157,7 +157,7 @@ img{
 }
 .movie-title{
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 .movie-meta{
   margin: 0;
@@ -184,7 +184,9 @@ img{
 }
 
 @media (max-width: 520px){
-  .movie-card .poster{ height: 220px }
+  .movie-card .poster{ 
+    height: 220px
+   }
 }
 
 /* Circular poster thumbnails */
@@ -226,11 +228,19 @@ img{
   -webkit-overflow-scrolling:touch;
   padding:12px 6px;
 }
-.carousel::-webkit-scrollbar{ height:8px }
-.movie-card{ scroll-snap-align:start; min-width:220px }
+.carousel::-webkit-scrollbar{ 
+  height:8px
+ }
+.movie-card{ 
+  scroll-snap-align:start; 
+  min-width:220px }
 
 .carousel-btn{
-  background:#fff; border:1px solid #ddd; padding:8px 10px; border-radius:6px; cursor:pointer; font-size:20px;
+  background:#fff; 
+  border:1px solid #ddd; 
+  padding:8px 10px; border-radius:6px;
+  cursor:pointer; 
+  font-size:20px;
 }
 .carousel-btn:hover{ background:#f3f3f3 }
 
@@ -238,21 +248,61 @@ img{
 .movie-card{
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.movie-card:hover{ transform: translateY(-6px); box-shadow: 0 6px 18px rgba(0,0,0,0.12) }
+.movie-card:hover{ transform: translateY(-6px);
+   box-shadow: 0 6px 18px rgba(0,0,0,0.12) }
 
 @media (max-width:520px){
-  .poster-circle{ width:110px; height:110px }
-  .movie-card{ min-width:180px }
+  .poster-circle{
+     width:110px; 
+     height:110px
+     }
+  .movie-card{ 
+    in-width:180px 
+  }
 }
 
 /* Selected movie layout */
-.selected-movie{ padding:18px }
-.selected-grid{ display:flex; gap:18px; align-items:flex-start }
-.selected-info{ flex:1 }
-.poster.large{ width:220px; height:220px }
-.selected-movie .consensus{ margin-top:12px; color:#444 }
+.selected-movie{
+  padding: 18px;
+  height: 100px;
+  width: 150px;
+  border-radius: 30px;
+ }
+.selected-grid{ 
+  display:flex;
+   gap:18px;
+  align-items:flex-start 
+}
+.selected-info{ 
+  flex:1 
+}
+.poster.large{ 
+  width:220px; 
+  height:220px
+}
+.selected-movie .consensus{ 
+  margin-top:12px;
+   color:#444 
+  }
 
 @media (max-width:720px){
-  .selected-grid{ flex-direction:column; align-items:center }
-  .poster.large{ width:180px; height:180px }
+  .selected-grid{
+     flex-direction:column;
+      align-items:center
+     }
+  .poster.large{ 
+    width:180px; 
+    height:180px 
+  }
+}
+.back-button{
+  background-color: maroon;
+  color: white;
+  font-weight: bold;
+  width: 80px;
+  height: 35px; ;
+  gap: 10px;
+}
+.error-container{
+  background-color: #444;
 }
