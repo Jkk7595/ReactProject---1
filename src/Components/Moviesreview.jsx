@@ -109,11 +109,11 @@ function Moviesreview({ movies, onMovieClick }) {
                 onClick={() => handleMovieClick(item)}
                 style={{ cursor: "pointer" }}
               >
-                <img 
+                {/* <img 
                   src={item.image} 
                   alt={item.name} 
                   className="poster poster-circle" 
-                />
+                /> */}
                 <div className="movie-info">
                   <h3 className="movie-title">
                     {item.name} <span className="movie-year">({item.year})</span>
@@ -156,6 +156,7 @@ function Moviesreview({ movies, onMovieClick }) {
         </div>
       </section>
     </div>
+    
   );
 }
 

@@ -97,8 +97,8 @@ img{
 }
 
 @media (max-width: 420px){
-  .nav-4{ flex-direction: column; gap:8px }
-  .nav-4 p{ width:140px; height:140px }
+  .nav-4{ flex-direction: column; gap:8px; align-items: center }
+  .nav-4 p{ width:140px; height:140px;font-size: 14px;  text-align: center}
 }
 .nav-5{
    display: flex;
@@ -141,7 +141,7 @@ img{
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  display: flex;
+  display: block;
   flex-direction: column;
 }
 .movie-card .poster{
@@ -151,7 +151,7 @@ img{
 }
 .movie-info{
   padding: 12px;
-  display: flex;
+  display: block;
   flex-direction: column;
   gap: 8px;
 }
@@ -257,7 +257,9 @@ img{
      height:110px
      }
   .movie-card{ 
-    in-width:180px 
+   width:auto;
+   height: auto;
+
   }
 }
 
@@ -299,9 +301,12 @@ img{
   background-color: maroon;
   color: white;
   font-weight: bold;
-  width: 80px;
-  height: 35px; ;
+  /* width: 80px;
+  height: 35px; ; */
   gap: 10px;
+  margin-bottom: 25px;
+  padding: 10px;
+  border-radius: 30px;
 }
 .error-container{
   background-color: #444;
